@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import styles from './navBar.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import logo from './../assets/shared/logo.svg';
 import iconHamb from './../assets/shared/icon-hamburger.svg';
@@ -31,9 +31,9 @@ export const NavBar = function (props) {
 
     return (
         <header ref={header} className={styles.header}>
-            <a href=".">
+            <Link to="/">
                 <img className={styles.logo} src={logo} alt="Logo" />
-            </a>
+            </Link>
             <div className={styles.navIconWrapper} onClick={toggleNav}>
                 <img
                     className={styles.navIcon}
@@ -50,6 +50,7 @@ export const NavBar = function (props) {
                         return (
                             <li className={styles.li} key={link}>
                                 <NavLink
+                                    onClick={toggleNav}
                                     className={styles.link}
                                     to={
                                         link === 'Home'
