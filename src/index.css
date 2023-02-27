@@ -1,8 +1,13 @@
+/* // // // // // */
+
 :root {
-    --font-barlow: 'Barlow', sans-serif;
     --font-bellef: 'Bellefair', serif;
+    --font-barlow: 'Barlow', sans-serif;
+    --font-barlow-con: 'Barlow Condensed';
 
     --color-white: hsla(0, 0%, 100%, 1);
+    --color-black: hsla(230, 35%, 7%, 1);
+    --color-blue: hsla(231, 77%, 90%, 1);
 }
 
 * {

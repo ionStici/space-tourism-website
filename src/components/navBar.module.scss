@@ -175,9 +175,9 @@
 .link,
 .link:link,
 .link:visited {
+    font-family: var(--font-barlow-con);
     text-decoration: none;
     text-transform: uppercase;
-    font-family: var(--font-barlow);
     color: var(--color-white);
     font-size: 16px;
     line-height: 19px;
@@ -205,7 +205,7 @@
 
 .num {
     display: inline-block;
-    width: 22px;
+    width: 18px;
     font-weight: 700;
     margin-right: 11px;
 

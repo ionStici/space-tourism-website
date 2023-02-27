@@ -1,42 +1,32 @@
 import React from 'react';
-
-import bgMobile from './assets/home/background-home-mobile.jpg';
-import bgTablet from './assets/home/background-home-tablet.jpg';
-import bgDesktop from './assets/home/background-home-desktop.jpg';
-
-const styles = {
-    backgroundImage: `url(${bgMobile})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'fixed',
-    zIndex: '-2',
-    left: '0',
-    top: '0',
-    width: '100vw',
-    height: '100vh',
-};
-
-const test = {
-    fontFamily: 'Bellefair',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: '150px',
-    lineHeight: '150px',
-    color: '#FFFFFF',
-    textTransform: 'uppercase',
-    display: 'inline',
-};
+import styles from './Home.module.scss';
+import { Link } from 'react-router-dom';
 
 export const Home = function () {
     return (
-        <section style={styles}>{/* <h1 style={test}>Space</h1> */}</section>
+        <main className={styles.main}>
+            <div className={styles.bg}></div>
+
+            <div className={styles.contentWrapper}>
+                <h1 className={styles.h1}>
+                    <span className={styles.h1_up}>
+                        So, you want to travel to
+                    </span>
+                    <span className={styles.h1_down}>Space</span>
+                </h1>
+                <p className={styles.p}>
+                    Let’s face it; if you want to go to space, you might as well
+                    genuinely go to outer space and not hover kind of on the
+                    edge of it. Well sit back, and relax because we’ll give you
+                    a truly out of this world experience!
+                </p>
+            </div>
+
+            <div className={styles.buttonWrapper}>
+                <Link to="/destination" className={styles.link}>
+                    Explore
+                </Link>
+            </div>
+        </main>
     );
 };
-
-// So, you want to travel to
-
-// Let’s face it; if you want to go to space, you might as well genuinely go to
-// outer space and not hover kind of on the edge of it. Well sit back, and relax
-// because we’ll give you a truly out of this world experience!
-
-// Explore
