@@ -16,24 +16,40 @@
     box-sizing: border-box;
 }
 
+/* // // // // // */
+
+li:has(a.active)::after {
+    content: '';
+    position: absolute;
+    z-index: 15;
+    background-color: var(--color-white);
+    opacity: 1;
+}
+
 @media only screen and (max-width: 649px) {
     li:has(a.active)::after {
-        content: '';
-
-        position: absolute;
-        z-index: 15;
-
         top: 50%;
         transform: translateY(-50%);
         right: 0;
-
         width: 4px;
         height: 31px;
-        background-color: var(--color-white);
-
-        transition: background-color 1s ease-in-out;
     }
 }
 
 @media only screen and (min-width: 650px) {
+    li:has(a.active)::after {
+        width: 36px;
+        height: 3px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+    }
 }
+
+@media only screen and (min-width: 1000px) {
+    li:has(a.active)::after {
+        width: 70px;
+    }
+}
+
+/* // // // // // */
