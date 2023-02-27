@@ -1,3 +1,10 @@
+:root {
+    --font-barlow: 'Barlow', sans-serif;
+    --font-bellef: 'Bellefair', serif;
+
+    --color-white: hsla(0, 0%, 100%, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,5 +16,24 @@
     box-sizing: border-box;
 }
 
-/* font-family: 'Barlow', sans-serif; */
-/* font-family: 'Bellefair', serif; */
+@media only screen and (max-width: 649px) {
+    li:has(a.active)::after {
+        content: '';
+
+        position: absolute;
+        z-index: 15;
+
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+
+        width: 4px;
+        height: 31px;
+        background-color: var(--color-white);
+
+        transition: background-color 1s ease-in-out;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+}

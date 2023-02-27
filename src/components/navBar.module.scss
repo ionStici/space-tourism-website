@@ -1,0 +1,147 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px;
+    padding-bottom: 0;
+
+    @media only screen and (min-width: 650px) {
+        padding: 0 0 0 39px;
+    }
+}
+
+.logo {
+    @media only screen and (max-width: 649px) {
+        position: relative;
+        z-index: 10;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.navIconWrapper {
+    @media only screen and (max-width: 649px) {
+        position: relative;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    @media only screen and (min-width: 650px) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.layout {
+    display: none;
+    visibility: hidden;
+
+    @media only screen and (max-width: 649px) {
+        position: fixed;
+        z-index: 3;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.open .layout {
+    @media only screen and (max-width: 649px) {
+        display: revert;
+        visibility: revert;
+    }
+}
+
+.nav {
+    @media only screen and (max-width: 649px) {
+        position: fixed;
+        top: 0;
+        right: -254px;
+        z-index: 5;
+
+        width: 254px;
+        height: 100vh;
+
+        transition: right 0.2s ease-in-out;
+    }
+
+    background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(40px);
+}
+
+.open .nav {
+    @media only screen and (max-width: 649px) {
+        right: 0;
+    }
+}
+
+.ul {
+    list-style: none;
+
+    @media only screen and (max-width: 649px) {
+        padding: 118px 0 0 32px;
+    }
+
+    @media only screen and (min-width: 650px) {
+        display: flex;
+        padding: 0 33px 0 33px;
+        box-shadow: -4px 4px 16px 3px #0b0d1766;
+    }
+}
+
+.li {
+    position: relative;
+
+    &:not(:last-child) {
+        @media only screen and (max-width: 649px) {
+            margin-bottom: 32px;
+        }
+
+        @media only screen and (min-width: 650px) {
+            margin-right: 7px;
+        }
+    }
+}
+
+.link,
+.link:link,
+.link:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-barlow);
+    color: var(--color-white);
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    display: block;
+
+    @media only screen and (min-width: 650px) {
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 2.3625px;
+        padding: 39px 15px;
+        display: inline-block;
+
+        &:hover {
+        }
+    }
+}
+
+.num {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 11px;
+
+    @media only screen and (min-width: 650px) {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.linkText {
+    font-weight: 400;
+}
