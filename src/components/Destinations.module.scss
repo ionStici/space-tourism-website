@@ -1,4 +1,9 @@
+// // // // //
+
 .main {
+}
+
+.bg {
     position: fixed;
     z-index: -2;
     left: 0;
@@ -18,6 +23,137 @@
     }
 }
 
-.main {
-    color: #fff;
+.section {
+    margin-top: 88px;
+    text-align: center;
 }
+
+// // // // //
+
+// .planetWrapper {}
+
+.title {
+    font-family: var(--font-barlow-con);
+    color: var(--color-white);
+    text-transform: uppercase;
+
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+
+    margin-bottom: 32px;
+
+    &Num {
+        font-weight: 700;
+        opacity: 0.25;
+        margin-right: 18px;
+    }
+
+    &Text {
+        font-weight: 400;
+    }
+}
+
+.imgWrapper {
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 26px auto;
+}
+
+.img {
+    width: 100%;
+}
+
+// // // // //
+
+.contentWrapper {
+    padding: 0 24px;
+}
+
+.ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 31px;
+}
+
+.li {
+    &:not(:last-child) {
+        margin-right: 27px;
+    }
+}
+
+.link {
+    font-family: var(--font-barlow-con);
+    color: var(--color-blue);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+
+    padding: 0 0 8px 1.25px;
+}
+
+.activeLink {
+    color: var(--color-white);
+}
+
+// // // // //
+
+.h2 {
+    font-family: var(--font-bellef);
+    color: var(--color-white);
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+    margin-bottom: 1px;
+}
+
+.p {
+    font-family: var(--font-barlow);
+    color: var(--color-blue);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #383b4b;
+}
+
+// // // // //
+
+.distanceWrapper {
+    margin-bottom: 32px;
+}
+
+.travelWrapper {
+    margin-bottom: 58px;
+}
+
+.heading {
+    font-family: var(--font-barlow-con);
+    color: var(--color-blue);
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+
+    margin-bottom: 12px;
+}
+
+.res {
+    font-family: var(--font-bellef);
+    color: var(--color-white);
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+}
+
+// // // // //

@@ -16,28 +16,48 @@ import titanPng from './../assets/destination/image-titan.png';
 import titanWebp from './../assets/destination/image-titan.webp';
 
 const Component = function (props) {
+    const setActiveLink = function ({ isActive }) {
+        const style = {
+            color: 'var(--color-white)',
+            borderBottom: '3px solid var(--color-white)',
+        };
+
+        if (isActive) return style;
+    };
+
     return (
-        <>
-            <div>
-                <p>
-                    <span>01</span>
-                    <span>Pick your destination</span>
+        <section className={styles.section}>
+            <div className={styles.bg}></div>
+            <div className={styles.planetWrapper}>
+                <p className={styles.title}>
+                    <span className={styles.titleNum}>01</span>
+                    <span className={styles.titleText}>
+                        Pick your destination
+                    </span>
                 </p>
 
-                <picture>
-                    <source srcSet={props.moonWebp} type="image/webp" />
-                    <source srcSet={props.moonPng} type="image/png" />
-                    <img src={props.moonPng} alt={props.name} />
-                </picture>
+                <div className={styles.imgWrapper}>
+                    <picture>
+                        <source srcSet={props.moonWebp} type="image/webp" />
+                        <source srcSet={props.moonPng} type="image/png" />
+                        <img
+                            className={styles.img}
+                            src={props.moonPng}
+                            alt={props.name}
+                        />
+                    </picture>
+                </div>
             </div>
 
-            <div>
-                <ul>
+            <div className={styles.contentWrapper}>
+                <ul className={styles.ul}>
                     {props.allPlanets.map(planet => {
                         return (
-                            <li key={planet}>
+                            <li className={styles.li} key={planet}>
                                 <NavLink
+                                    className={`${styles.link}`}
                                     to={`/destination/${planet.toLowerCase()}`}
+                                    style={props.moonTest}
                                 >
                                     {planet}
                                 </NavLink>
@@ -46,39 +66,63 @@ const Component = function (props) {
                     })}
                 </ul>
 
-                <h2>{props.name.toUpperCase()}</h2>
+                <h2 className={styles.h2}>{props.name.toUpperCase()}</h2>
 
-                <p>{props.description}</p>
+                <p className={styles.p}>{props.description}</p>
 
-                <div>
-                    <p>AVG. DISTANCE</p>
-                    <p>{props.distance}</p>
+                <div className={styles.distanceWrapper}>
+                    <p className={styles.heading}>AVG. DISTANCE</p>
+                    <p className={styles.res}>{props.distance}</p>
                 </div>
-                <div>
-                    <p>Est. travel time</p>
-                    <p>{props.travel}</p>
+                <div className={styles.travelWrapper}>
+                    <p className={styles.heading}>Est. travel time</p>
+                    <p className={styles.res}>{props.travel}</p>
                 </div>
             </div>
-        </>
+        </section>
     );
 };
 
 export const Destinations = function (props) {
     const navigate = useNavigate();
-    const goMoon = () => navigate('/destination/moon');
-    // const goMars = () => navigate('/destination/mars');
-    // const goEuropa = () => navigate('/destination/europa');
-    // const goTitan = () => navigate('/destination/titan');
+    const goDestinationPage = () => navigate('/destination');
 
+    const destination = useParams();
     const [data] = useState(info.destinations);
-    const [planets, setPlanets] = useState([]);
-    useEffect(() => setPlanets(data.map(planet => planet.name)), []);
-
     const [moon] = useState(data[0]);
     const [mars] = useState(data[1]);
     const [europa] = useState(data[2]);
     const [titan] = useState(data[3]);
-    const destination = useParams();
+    const [planets, setPlanets] = useState([]);
+    useEffect(() => setPlanets(data.map(planet => planet.name)), []);
+
+    const preventInexistentURL = function () {
+        if (
+            destination.planet !== 'moon' &&
+            destination.planet !== 'mars' &&
+            destination.planet !== 'europa' &&
+            destination.planet !== 'titan'
+        )
+            goDestinationPage();
+    };
+
+    useEffect(() => preventInexistentURL(), []);
+
+    console.log(window.location.pathname === '/destination');
+
+    const moonTest = function ({ isActive }) {
+        if (window.location.pathname === '/destination') {
+            return {
+                color: 'var(--color-white)',
+                borderBottom: '3px solid var(--color-white)',
+            };
+        } else if (isActive) {
+            return {
+                color: 'var(--color-white)',
+                borderBottom: '3px solid var(--color-white)',
+            };
+        }
+    };
 
     // if (destination.planet === 'moon') {
     //     return (
@@ -107,6 +151,7 @@ export const Destinations = function (props) {
                     description={mars.description}
                     distance={mars.distance}
                     travel={mars.travel}
+                    moonTest={moonTest}
                 />
             </main>
         );
@@ -123,6 +168,7 @@ export const Destinations = function (props) {
                     description={europa.description}
                     distance={europa.distance}
                     travel={europa.travel}
+                    moonTest={moonTest}
                 />
             </main>
         );
@@ -139,19 +185,11 @@ export const Destinations = function (props) {
                     description={titan.description}
                     distance={titan.distance}
                     travel={titan.travel}
+                    moonTest={moonTest}
                 />
             </main>
         );
     }
-
-    // if (
-    //     destination.planet !== 'moon' &&
-    //     destination.planet !== 'mars' &&
-    //     destination.planet !== 'europa' &&
-    //     destination.planet !== 'titan'
-    // ) {
-    //     goMoon();
-    // }
 
     return (
         <main className={styles.main}>
@@ -163,6 +201,7 @@ export const Destinations = function (props) {
                 description={moon.description}
                 distance={moon.distance}
                 travel={moon.travel}
+                moonTest={moonTest}
             />
         </main>
     );
