@@ -45,7 +45,6 @@ li:has(a.active)::after {
     li:has(a.active)::after {
         width: 36px;
         height: 3px;
-        font-size: ;
         left: 50%;
         transform: translateX(-50%);
         bottom: 0;

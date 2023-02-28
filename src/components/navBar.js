@@ -63,7 +63,10 @@ export const NavBar = function (props) {
                             <li className={styles.li} key={link}>
                                 <NavLink
                                     onClick={toggleNavConditionally}
-                                    className={styles.link}
+                                    className={`${({ isActive }) =>
+                                        isActive ? styles.test : undefined} ${
+                                        styles.link
+                                    }`}
                                     to={
                                         link === 'Home'
                                             ? '/'

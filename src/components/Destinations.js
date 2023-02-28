@@ -15,6 +15,8 @@ import europaWebp from './../assets/destination/image-europa.webp';
 import titanPng from './../assets/destination/image-titan.png';
 import titanWebp from './../assets/destination/image-titan.webp';
 
+console.log(styles.runAnimation);
+
 const Component = function (props) {
     return (
         <section className={styles.section}>
@@ -32,7 +34,7 @@ const Component = function (props) {
                         <source srcSet={props.moonWebp} type="image/webp" />
                         <source srcSet={props.moonPng} type="image/png" />
                         <img
-                            className={styles.img}
+                            className={`${styles.img}`}
                             src={props.moonPng}
                             alt={props.name}
                         />
@@ -71,13 +73,15 @@ const Component = function (props) {
 
                 <p className={styles.p}>{props.description}</p>
 
-                <div className={styles.distanceWrapper}>
-                    <p className={styles.heading}>AVG. DISTANCE</p>
-                    <p className={styles.res}>{props.distance}</p>
-                </div>
-                <div className={styles.travelWrapper}>
-                    <p className={styles.heading}>Est. travel time</p>
-                    <p className={styles.res}>{props.travel}</p>
+                <div className={styles.statsWrapper}>
+                    <div className={styles.distanceWrapper}>
+                        <p className={styles.heading}>AVG. DISTANCE</p>
+                        <p className={styles.res}>{props.distance}</p>
+                    </div>
+                    <div className={styles.travelWrapper}>
+                        <p className={styles.heading}>Est. travel time</p>
+                        <p className={styles.res}>{props.travel}</p>
+                    </div>
                 </div>
             </div>
         </section>
