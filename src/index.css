@@ -3,7 +3,7 @@
 :root {
     --font-bellef: 'Bellefair', serif;
     --font-barlow: 'Barlow', sans-serif;
-    --font-barlow-con: 'Barlow Condensed';
+    --font-barlow-con: 'Barlow Condensed', serif;
 
     --color-white: hsla(0, 0%, 100%, 1);
     --color-black: hsla(230, 35%, 7%, 1);

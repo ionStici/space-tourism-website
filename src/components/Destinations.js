@@ -16,15 +16,6 @@ import titanPng from './../assets/destination/image-titan.png';
 import titanWebp from './../assets/destination/image-titan.webp';
 
 const Component = function (props) {
-    const setActiveLink = function ({ isActive }) {
-        const style = {
-            color: 'var(--color-white)',
-            borderBottom: '3px solid var(--color-white)',
-        };
-
-        if (isActive) return style;
-    };
-
     return (
         <section className={styles.section}>
             <div className={styles.bg}></div>
@@ -57,7 +48,17 @@ const Component = function (props) {
                                 <NavLink
                                     className={`${styles.link}`}
                                     to={`/destination/${planet.toLowerCase()}`}
-                                    style={props.moonTest}
+                                    style={({ isActive }) => {
+                                        if (isActive) {
+                                            return props.activeLinkStyles;
+                                        } else if (
+                                            window.location.pathname ===
+                                                '/destination' &&
+                                            planet === 'Moon'
+                                        ) {
+                                            return props.activeLinkStyles;
+                                        }
+                                    }}
                                 >
                                     {planet}
                                 </NavLink>
@@ -108,20 +109,9 @@ export const Destinations = function (props) {
 
     useEffect(() => preventInexistentURL(), []);
 
-    console.log(window.location.pathname === '/destination');
-
-    const moonTest = function ({ isActive }) {
-        if (window.location.pathname === '/destination') {
-            return {
-                color: 'var(--color-white)',
-                borderBottom: '3px solid var(--color-white)',
-            };
-        } else if (isActive) {
-            return {
-                color: 'var(--color-white)',
-                borderBottom: '3px solid var(--color-white)',
-            };
-        }
+    const activeLinkStyles = {
+        color: 'var(--color-white)',
+        borderBottom: '3px solid var(--color-white)',
     };
 
     // if (destination.planet === 'moon') {
@@ -151,7 +141,7 @@ export const Destinations = function (props) {
                     description={mars.description}
                     distance={mars.distance}
                     travel={mars.travel}
-                    moonTest={moonTest}
+                    activeLinkStyles={activeLinkStyles}
                 />
             </main>
         );
@@ -168,7 +158,7 @@ export const Destinations = function (props) {
                     description={europa.description}
                     distance={europa.distance}
                     travel={europa.travel}
-                    moonTest={moonTest}
+                    activeLinkStyles={activeLinkStyles}
                 />
             </main>
         );
@@ -185,7 +175,7 @@ export const Destinations = function (props) {
                     description={titan.description}
                     distance={titan.distance}
                     travel={titan.travel}
-                    moonTest={moonTest}
+                    activeLinkStyles={activeLinkStyles}
                 />
             </main>
         );
@@ -201,7 +191,7 @@ export const Destinations = function (props) {
                 description={moon.description}
                 distance={moon.distance}
                 travel={moon.travel}
-                moonTest={moonTest}
+                activeLinkStyles={activeLinkStyles}
             />
         </main>
     );
