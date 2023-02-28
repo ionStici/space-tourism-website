@@ -19,19 +19,31 @@ export const NavBar = function (props) {
             header.current.classList.add(styles.open);
 
             navIcon.current.setAttribute('src', iconClose);
-            body.style.overflow = 'hidden';
+            body.classList.add(styles.overflow_hidden);
         } else if (header.current.classList.contains('open')) {
             header.current.classList.remove('open');
             header.current.classList.remove(styles.open);
 
             navIcon.current.setAttribute('src', iconHamb);
-            body.style.overflow = 'revert';
+            body.classList.remove(styles.overflow_hidden);
         }
+    };
+
+    const toggleNavConditionally = function () {
+        if (window.innerWidth < 650) toggleNav();
+    };
+
+    const toggleNavConditionallyLogo = function () {
+        if (
+            header.current.classList.contains('open') &&
+            window.innerWidth < 650
+        )
+            toggleNav();
     };
 
     return (
         <header ref={header} className={styles.header}>
-            <Link to="/">
+            <Link to="/" onClick={toggleNavConditionallyLogo}>
                 <img className={styles.logo} src={logo} alt="Logo" />
             </Link>
             <div className={styles.navIconWrapper} onClick={toggleNav}>
@@ -50,7 +62,7 @@ export const NavBar = function (props) {
                         return (
                             <li className={styles.li} key={link}>
                                 <NavLink
-                                    onClick={toggleNav}
+                                    onClick={toggleNavConditionally}
                                     className={styles.link}
                                     to={
                                         link === 'Home'

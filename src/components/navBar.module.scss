@@ -105,6 +105,12 @@
     }
 }
 
+.overflow_hidden {
+    @media only screen and (max-width: 649px) {
+        overflow: hidden;
+    }
+}
+
 .ul {
     list-style: none;
 
