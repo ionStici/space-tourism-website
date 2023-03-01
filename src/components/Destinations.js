@@ -187,8 +187,6 @@ export const Destinations = function (props) {
     //     );
     // }
 
-    useEffect(() => {}, []);
-
     if (destination.planet === 'mars') {
         return (
             <main className={styles.main}>
