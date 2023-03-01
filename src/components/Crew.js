@@ -16,17 +16,32 @@ import anoushehPng from './../assets/crew/image-anousheh-ansari.png';
 import anoushehWebp from './../assets/crew/image-anousheh-ansari.webp';
 
 const CrewMember = function (props) {
+    const test = () => {
+        const p15 = { width: 178, paddingLeft: 15 };
+        const p5 = { width: 178, paddingLeft: 5 };
+
+        if (props.name.split(' ')[0].toLowerCase() === 'douglas') return p15;
+        if (props.name.split(' ')[0].toLowerCase() === 'mark') return p5;
+    };
+
     return (
         <section className={styles.section}>
             <div className={styles.titleBox}>
-                <div className={styles.title}></div>
+                <p className={styles.title}>
+                    <span className={styles.titleNum}>02</span>
+                    <span className={styles.titleText}>Mett your Crew</span>
+                </p>
             </div>
 
             <div className={styles.imgBox}>
                 <picture>
-                    <source />
-                    <source />
-                    <img className={styles.img} alt="Crew Member" />
+                    <source srcSet={props.imgs[0]} type="image/png" />
+                    <source srcSet={props.imgs[1]} type="image/webp" />
+                    <img
+                        src={props.imgs[0]}
+                        className={styles.img}
+                        alt="Crew Member"
+                    />
                 </picture>
             </div>
 
