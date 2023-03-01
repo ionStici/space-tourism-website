@@ -187,12 +187,6 @@ export const Destinations = function (props) {
     //     );
     // }
 
-    if (window.location.pathname === '/destination' && props.name === 'Moon') {
-        console.log(props.name);
-    }
-
-    // console.log(history);
-
     useEffect(() => {}, []);
 
     if (destination.planet === 'mars') {

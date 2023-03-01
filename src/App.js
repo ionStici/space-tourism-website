@@ -8,6 +8,7 @@ import {
 import { Root } from './Root';
 import { Home } from './Home';
 import { Destinations } from './components/Destinations';
+import { Crew } from './components/Crew';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -17,7 +18,9 @@ const router = createBrowserRouter(
             <Route path="/destination" element={<Destinations />} />
             <Route path="/destination/:planet" element={<Destinations />} />
 
-            <Route path="/crew" element={<Home />} />
+            <Route path="/crew" element={<Crew />} />
+            <Route path="/crew/:member" element={<Crew />} />
+
             <Route path="/technology" element={<Home />} />
         </Route>
     )
