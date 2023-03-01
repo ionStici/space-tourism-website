@@ -6,9 +6,10 @@ import {
 } from 'react-router-dom';
 
 import { Root } from './Root';
-import { Home } from './Home';
+import { Home } from './components/Home';
 import { Destinations } from './components/Destinations';
 import { Crew } from './components/Crew';
+import { Technology } from './components/Technology';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,8 +22,11 @@ const router = createBrowserRouter(
             <Route path="/crew" element={<Crew />} />
             <Route path="/crew/:member" element={<Crew />} />
 
-            <Route path="/technology" element={<Home />} />
-            <Route path="/technology/:tech" element={<Home />} />
+            <Route path="/technology" element={<Technology />}>
+                <Route path="launch" element={<Technology />} />
+                <Route path="spaceport" element={<Technology />} />
+                <Route path="capsule" element={<Technology />} />
+            </Route>
         </Route>
     )
 );

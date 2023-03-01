@@ -1,0 +1,21 @@
+.bg {
+    position: fixed;
+    z-index: -2;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url(./../assets/technology/background-technology-mobile.jpg);
+    background-size: cover;
+    background-position: center;
+
+    @media only screen and (min-width: 600px) {
+        background-image: url(./../assets/technology/background-technology-tablet.jpg);
+    }
+
+    @media only screen and (min-width: 1000px) {
+        background-image: url(./../assets/technology/background-technology-desktop.jpg);
+    }
+}

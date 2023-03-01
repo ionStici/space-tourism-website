@@ -49,17 +49,17 @@
     width: 100vw;
     height: 100vh;
 
-    background-image: url(./assets/home/background-home-mobile.jpg);
+    background-image: url(./../assets/home/background-home-mobile.jpg);
 
     background-size: cover;
     background-position: center;
 
     @media only screen and (min-width: 600px) {
-        background-image: url(./assets/home/background-home-tablet.jpg);
+        background-image: url(./../assets/home/background-home-tablet.jpg);
     }
 
     @media only screen and (min-width: 1000px) {
-        background-image: url(./assets/home/background-home-desktop.jpg);
+        background-image: url(./../assets/home/background-home-desktop.jpg);
     }
 }
 
