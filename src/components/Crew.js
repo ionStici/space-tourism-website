@@ -16,20 +16,12 @@ import anoushehPng from './../assets/crew/image-anousheh-ansari.png';
 import anoushehWebp from './../assets/crew/image-anousheh-ansari.webp';
 
 const CrewMember = function (props) {
-    const test = () => {
-        const p15 = { width: 178, paddingLeft: 15 };
-        const p5 = { width: 178, paddingLeft: 5 };
-
-        if (props.name.split(' ')[0].toLowerCase() === 'douglas') return p15;
-        if (props.name.split(' ')[0].toLowerCase() === 'mark') return p5;
-    };
-
     return (
         <section className={styles.section}>
             <div className={styles.titleBox}>
                 <p className={styles.title}>
                     <span className={styles.titleNum}>02</span>
-                    <span className={styles.titleText}>Mett your Crew</span>
+                    <span className={styles.titleText}>Meet your Crew</span>
                 </p>
             </div>
 
@@ -38,9 +30,14 @@ const CrewMember = function (props) {
                     <source srcSet={props.imgs[0]} type="image/png" />
                     <source srcSet={props.imgs[1]} type="image/webp" />
                     <img
+                        className={`${styles.img}`}
                         src={props.imgs[0]}
-                        className={styles.img}
                         alt="Crew Member"
+                        style={
+                            props.name.split(' ')[0].toLowerCase() === 'douglas'
+                                ? { paddingLeft: '15px' }
+                                : undefined
+                        }
                     />
                 </picture>
             </div>
