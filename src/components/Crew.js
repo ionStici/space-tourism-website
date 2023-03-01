@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Crew.module.scss';
 import data from './../data.json';
 import { NavLink, useParams } from 'react-router-dom';
@@ -134,6 +134,26 @@ export const Crew = function () {
 
     const urlPar = useParams();
     const member = urlPar.member;
+
+    // const maxSlides = data.crew.length;
+    const [current, setCurrent] = useState(1);
+
+    const handleKeyDownEvent = function (event) {
+        if (event.key === 'ArrowLeft') {
+            // setCurrent(prev => prev - 1);
+        }
+
+        if (event.key === 'ArrowRight') {
+            // setCurrent(prev => prev + 1);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDownEvent);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDownEvent);
+        };
+    }, []);
 
     if (member === mark[0].name.split(' ')[0].toLowerCase()) {
         return (

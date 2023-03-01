@@ -21,6 +21,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--color-black);
+}
+
 /* // // // // // */
 
 li:has(a.active)::after {
