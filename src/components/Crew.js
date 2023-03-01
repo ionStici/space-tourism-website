@@ -1,4 +1,4 @@
-import React, { createElement, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './Crew.module.scss';
 import data from './../data.json';
 import { NavLink, useParams } from 'react-router-dom';
@@ -16,6 +16,34 @@ import anoushehPng from './../assets/crew/image-anousheh-ansari.png';
 import anoushehWebp from './../assets/crew/image-anousheh-ansari.webp';
 
 const CrewMember = function (props) {
+    const imgRef = useRef(null);
+    const h1Ref = useRef(null);
+    const nameRef = useRef(null);
+    const bioRef = useRef(null);
+
+    const domEls = [imgRef, h1Ref, nameRef, bioRef];
+
+    const hide = function () {
+        domEls.forEach(el => {
+            el.current.style.transition = '';
+            el.current.style.opacity = '0';
+        });
+    };
+
+    const show = function () {
+        setTimeout(() => {
+            domEls.forEach(el => {
+                el.current.style.transition = 'opacity .4s ease-in';
+                el.current.style.opacity = '1';
+            });
+        }, 75);
+    };
+
+    const handleFadeIn = function () {
+        hide();
+        show();
+    };
+
     return (
         <section className={styles.section}>
             <div className={styles.titleBox}>
@@ -25,7 +53,7 @@ const CrewMember = function (props) {
                 </p>
             </div>
 
-            <div className={styles.imgBox}>
+            <div className={styles.imgBox} ref={imgRef}>
                 <picture>
                     <source srcSet={props.imgs[0]} type="image/png" />
                     <source srcSet={props.imgs[1]} type="image/webp" />
@@ -43,9 +71,15 @@ const CrewMember = function (props) {
             </div>
 
             <div className={styles.contentBox}>
-                <h1 className={styles.role}>{props.role}</h1>
-                <p className={styles.name}>{props.name}</p>
-                <p className={styles.bio}>{props.bio}</p>
+                <h1 className={styles.role} ref={h1Ref}>
+                    {props.role}
+                </h1>
+                <p className={styles.name} ref={nameRef}>
+                    {props.name}
+                </p>
+                <p className={styles.bio} ref={bioRef}>
+                    {props.bio}
+                </p>
                 <div className={styles.circlesBox}>
                     {props.crewData[0].map(member => {
                         return (
@@ -65,6 +99,7 @@ const CrewMember = function (props) {
                                 to={`/crew/${member.name
                                     .split(' ')[0]
                                     .toLowerCase()}`}
+                                onClick={handleFadeIn}
                             ></NavLink>
                         );
                     })}

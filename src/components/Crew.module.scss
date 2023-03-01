@@ -25,7 +25,20 @@
     }
 }
 
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .section {
+    animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
     text-align: center;
     margin-top: 24px;
     margin-bottom: 104px;
@@ -309,10 +322,15 @@
     background-color: var(--color-white);
     opacity: 0.17;
     margin-right: 16px;
+    transition: opacity 0.1s;
 
     @media only screen and (min-width: 1000px) {
         width: 15px;
         height: 15px;
+    }
+
+    &:hover {
+        opacity: 0.5;
     }
 }
 

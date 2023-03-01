@@ -22,6 +22,7 @@ const router = createBrowserRouter(
             <Route path="/crew/:member" element={<Crew />} />
 
             <Route path="/technology" element={<Home />} />
+            <Route path="/technology/:tech" element={<Home />} />
         </Route>
     )
 );
