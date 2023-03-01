@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import info from './../data.json';
 import styles from './Destinations.module.scss';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
@@ -15,9 +15,54 @@ import europaWebp from './../assets/destination/image-europa.webp';
 import titanPng from './../assets/destination/image-titan.png';
 import titanWebp from './../assets/destination/image-titan.webp';
 
-console.log(styles.runAnimation);
-
 const Component = function (props) {
+    const imgRef = useRef(null);
+    const nameRef = useRef(null);
+    const textRef = useRef(null);
+    const statsRef = useRef(null);
+
+    const hidePlanet = () => {
+        imgRef.current.style.transition = '';
+        imgRef.current.style.opacity = '0';
+        imgRef.current.style.transform = 'rotate(10deg) scale(0.9)';
+    };
+
+    const animatePlanet = () => {
+        setTimeout(() => {
+            imgRef.current.style.transition =
+                'opacity .25s ease-in-out, transform .5s ease-in-out';
+            imgRef.current.style.opacity = '1';
+            imgRef.current.style.transform = 'rotate(0) scale(1)';
+        }, 75);
+    };
+
+    const hideContent = () => {
+        nameRef.current.style.transition = '';
+        textRef.current.style.transition = '';
+        statsRef.current.style.transition = '';
+        nameRef.current.style.opacity = '0';
+        textRef.current.style.opacity = '0';
+        statsRef.current.style.opacity = '0';
+    };
+
+    const animateContent = () => {
+        setTimeout(() => {
+            nameRef.current.style.transition = 'opacity .4s ease-in';
+            textRef.current.style.transition = 'opacity .4s ease-in';
+            statsRef.current.style.transition = 'opacity .4s ease-in';
+            nameRef.current.style.opacity = '1';
+            textRef.current.style.opacity = '1';
+            statsRef.current.style.opacity = '1';
+        }, 75);
+    };
+
+    const handleFadeIn = function () {
+        hidePlanet();
+        animatePlanet();
+        hideContent();
+        animateContent();
+    };
+
     return (
         <section className={styles.section}>
             <div className={styles.bg}></div>
@@ -37,6 +82,7 @@ const Component = function (props) {
                             className={`${styles.img}`}
                             src={props.moonPng}
                             alt={props.name}
+                            ref={imgRef}
                         />
                     </picture>
                 </div>
@@ -49,7 +95,9 @@ const Component = function (props) {
                             <li className={styles.li} key={planet}>
                                 <NavLink
                                     className={`${styles.link}`}
-                                    to={`/destination/${planet.toLowerCase()}`}
+                                    to={{
+                                        pathname: `/destination/${planet.toLowerCase()}`,
+                                    }}
                                     style={({ isActive }) => {
                                         if (isActive) {
                                             return props.activeLinkStyles;
@@ -61,6 +109,7 @@ const Component = function (props) {
                                             return props.activeLinkStyles;
                                         }
                                     }}
+                                    onClick={handleFadeIn}
                                 >
                                     {planet}
                                 </NavLink>
@@ -69,11 +118,15 @@ const Component = function (props) {
                     })}
                 </ul>
 
-                <h2 className={styles.h2}>{props.name.toUpperCase()}</h2>
+                <h2 className={styles.h2} ref={nameRef}>
+                    {props.name.toUpperCase()}
+                </h2>
 
-                <p className={styles.p}>{props.description}</p>
+                <p className={styles.p} ref={textRef}>
+                    {props.description}
+                </p>
 
-                <div className={styles.statsWrapper}>
+                <div className={styles.statsWrapper} ref={statsRef}>
                     <div className={styles.distanceWrapper}>
                         <p className={styles.heading}>AVG. DISTANCE</p>
                         <p className={styles.res}>{props.distance}</p>
@@ -133,6 +186,14 @@ export const Destinations = function (props) {
     //         </main>
     //     );
     // }
+
+    if (window.location.pathname === '/destination' && props.name === 'Moon') {
+        console.log(props.name);
+    }
+
+    // console.log(history);
+
+    useEffect(() => {}, []);
 
     if (destination.planet === 'mars') {
         return (
