@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Technology.module.scss';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import fetch from './../data.json';
@@ -15,6 +15,9 @@ import spacePortrait from './../assets/technology/image-space-capsule-portrait.j
 // // // // // // // // // //
 
 const Markup = function (props) {
+    const imgRef = useRef(null);
+    const contentRef = useRef(null);
+
     return (
         <>
             <p className={styles.title}>
@@ -22,7 +25,7 @@ const Markup = function (props) {
                 <span className={styles.titleText}>Space Launch 101</span>
             </p>
 
-            <div className={styles.imgBox}>
+            <div className={styles.imgBox} ref={imgRef}>
                 <picture>
                     <source srcSet={props.imgs[0]} media="(max-width: 999px)" />
                     <source
@@ -57,7 +60,7 @@ const Markup = function (props) {
                 ))}
             </div>
 
-            <div className={styles.contentBox}>
+            <div className={styles.contentBox} ref={contentRef}>
                 <p className={styles.term}>The terminology…</p>
                 <h1 className={styles.h1}>{props.name}</h1>
                 <p className={styles.p}>{props.description}</p>
