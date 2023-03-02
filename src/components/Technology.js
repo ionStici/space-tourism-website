@@ -22,24 +22,6 @@ const Markup = function (props) {
                 <span className={styles.titleText}>Space Launch 101</span>
             </p>
 
-            <div className={styles.contentBox}>
-                <p className={styles.term}>The terminology…</p>
-                <h1 className={styles.h1}>{props.name}</h1>
-                <p className={styles.p}>{props.description}</p>
-            </div>
-
-            <div className={styles.linkBox}>
-                {props.names.map((name, i) => (
-                    <NavLink
-                        className={styles.link}
-                        key={name}
-                        to={`/technology/${name}`}
-                    >
-                        {i + 1}
-                    </NavLink>
-                ))}
-            </div>
-
             <div className={styles.imgBox}>
                 <picture>
                     <source srcSet={props.imgs[0]} media="(max-width: 999px)" />
@@ -53,6 +35,32 @@ const Markup = function (props) {
                         alt={props.name}
                     />
                 </picture>
+            </div>
+
+            <div className={styles.linkBox}>
+                {props.names.map((name, i) => (
+                    <NavLink
+                        className={styles.link}
+                        key={name}
+                        to={`/technology/${name}`}
+                        style={({ isActive }) =>
+                            isActive
+                                ? {
+                                      backgroundColor: 'var(--color-white)',
+                                      color: 'var(--color-black)',
+                                  }
+                                : undefined
+                        }
+                    >
+                        {i + 1}
+                    </NavLink>
+                ))}
+            </div>
+
+            <div className={styles.contentBox}>
+                <p className={styles.term}>The terminology…</p>
+                <h1 className={styles.h1}>{props.name}</h1>
+                <p className={styles.p}>{props.description}</p>
             </div>
         </>
     );

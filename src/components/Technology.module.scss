@@ -25,41 +25,121 @@
 // .main {}
 
 .section {
-    color: var(--color-white);
+    margin-top: 24px;
+    margin-bottom: 81px;
 }
 
 // // // // // // // // // //
 
-.contentBox {
-}
+.title {
+    font-family: var(--font-barlow-con);
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-align: center;
 
-.term {
-}
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
 
-.h1 {
-}
+    margin-bottom: 32px;
 
-.p {
+    &Num {
+        font-weight: 700;
+        opacity: 0.25;
+        margin-right: 16px;
+    }
+
+    &Text {
+        font-weight: 400;
+    }
 }
 
 // // // // // // // // // //
 
 .imgBox {
+    margin-bottom: 34px;
 }
 
 .img {
+    width: 100%;
 }
 
 // // // // // // // // // //
 
 .linkBox {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
 }
 
 .link,
 .link:link,
 .link:visited {
-    display: block;
+    font-family: var(--font-bellef);
     color: var(--color-white);
+    text-decoration: none;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: border 0.15s ease-in;
+
+    &:hover {
+        border: 1px solid var(--color-white);
+    }
+
+    &:not(:last-child) {
+        margin-right: 16px;
+    }
+}
+
+// // // // // // // // // //
+
+.contentBox {
+    color: var(--color-white);
+    text-align: center;
+    padding: 0 24px;
+}
+
+.term {
+    font-family: var(--font-barlow-con);
+    color: var(--color-blue);
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+
+    margin-bottom: 9px;
+}
+
+.h1 {
+    font-family: var(--font-bellef);
+    color: var(--color-white);
+    text-transform: uppercase;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    margin-bottom: 16px;
+}
+
+.p {
+    font-family: var(--font-barlow);
+    color: var(--color-blue);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
 }
 
 // // // // // // // // // //
