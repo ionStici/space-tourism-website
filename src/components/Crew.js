@@ -135,18 +135,35 @@ export const Crew = function () {
     const urlPar = useParams();
     const member = urlPar.member;
 
-    // const maxSlides = data.crew.length;
+    const maxSlides = data.crew.length;
     const [current, setCurrent] = useState(1);
 
     const handleKeyDownEvent = function (event) {
-        if (event.key === 'ArrowLeft') {
-            // setCurrent(prev => prev - 1);
-        }
+        setCurrent(prev => {
+            if (event.key === 'ArrowLeft' && prev === 1)
+                return prev + maxSlides - 1;
 
-        if (event.key === 'ArrowRight') {
-            // setCurrent(prev => prev + 1);
-        }
+            if (event.key === 'ArrowRight' && prev === 4)
+                return prev - maxSlides + 1;
+
+            if (event.key === 'ArrowLeft' && prev > 1) return prev - 1;
+
+            if (event.key === 'ArrowRight' && prev < maxSlides) return prev + 1;
+        });
     };
+
+    // useEffect(() => {
+    //     if (current === 1) {
+    //     }
+    //     if (current === 2) {
+    //     }
+    //     if (current === 3) {
+    //         return;
+    //     }
+    //     if (current === 4) {
+    //         return;
+    //     }
+    // });
 
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDownEvent);
