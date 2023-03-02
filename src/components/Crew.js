@@ -3,8 +3,10 @@ import styles from './Crew.module.scss';
 import data from './../data.json';
 import { NavLink, useParams } from 'react-router-dom';
 
-import douglasPng from './../assets/crew/image-douglas-hurley.png';
-import douglasWebp from './../assets/crew/image-douglas-hurley.webp';
+// import douglasPng from './../assets/crew/image-douglas-hurley.png';
+// import douglasWebp from './../assets/crew/image-douglas-hurley.webp';
+
+import mainImgsArr from '../Root';
 
 import markPng from './../assets/crew/image-mark-shuttleworth.png';
 import markWebp from './../assets/crew/image-mark-shuttleworth.webp';
@@ -14,6 +16,22 @@ import victorWebp from './../assets/crew/image-victor-glover.webp';
 
 import anoushehPng from './../assets/crew/image-anousheh-ansari.png';
 import anoushehWebp from './../assets/crew/image-anousheh-ansari.webp';
+
+const douglasPng = mainImgsArr[2];
+const douglasWebp = mainImgsArr[3];
+
+const imgsArr = [
+    douglasPng,
+    douglasWebp,
+    markPng,
+    markWebp,
+    victorPng,
+    victorWebp,
+    anoushehPng,
+    anoushehWebp,
+];
+
+// // // // // // // // // //
 
 const CrewMember = function (props) {
     const imgRef = useRef(null);
@@ -110,6 +128,13 @@ const CrewMember = function (props) {
 };
 
 export const Crew = function () {
+    useEffect(() => {
+        imgsArr.forEach(picture => {
+            const img = new Image();
+            img.src = picture;
+        });
+    }, []);
+
     const crewData = useState(data.crew);
     const douglas = useState({
         name: crewData[0][0].name,
@@ -135,22 +160,22 @@ export const Crew = function () {
     const urlPar = useParams();
     const member = urlPar.member;
 
-    const maxSlides = data.crew.length;
-    const [current, setCurrent] = useState(1);
+    // const maxSlides = data.crew.length;
+    // const [current, setCurrent] = useState(1);
 
-    const handleKeyDownEvent = function (event) {
-        setCurrent(prev => {
-            if (event.key === 'ArrowLeft' && prev === 1)
-                return prev + maxSlides - 1;
+    // const handleKeyDownEvent = function (event) {
+    //     setCurrent(prev => {
+    //         if (event.key === 'ArrowLeft' && prev === 1)
+    //             return prev + maxSlides - 1;
 
-            if (event.key === 'ArrowRight' && prev === 4)
-                return prev - maxSlides + 1;
+    //         if (event.key === 'ArrowRight' && prev === 4)
+    //             return prev - maxSlides + 1;
 
-            if (event.key === 'ArrowLeft' && prev > 1) return prev - 1;
+    //         if (event.key === 'ArrowLeft' && prev > 1) return prev - 1;
 
-            if (event.key === 'ArrowRight' && prev < maxSlides) return prev + 1;
-        });
-    };
+    //         if (event.key === 'ArrowRight' && prev < maxSlides) return prev + 1;
+    //     });
+    // };
 
     // useEffect(() => {
     //     if (current === 1) {
@@ -165,12 +190,12 @@ export const Crew = function () {
     //     }
     // });
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDownEvent);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDownEvent);
-        };
-    }, []);
+    // useEffect(() => {
+    //     window.addEventListener('keydown', handleKeyDownEvent);
+    //     return () => {
+    //         window.removeEventListener('keydown', handleKeyDownEvent);
+    //     };
+    // }, []);
 
     if (member === mark[0].name.split(' ')[0].toLowerCase()) {
         return (
@@ -220,6 +245,7 @@ export const Crew = function () {
     return (
         <main className={styles.main}>
             <div className={styles.bg}></div>
+
             <CrewMember
                 crewData={crewData}
                 name={douglas[0].name}

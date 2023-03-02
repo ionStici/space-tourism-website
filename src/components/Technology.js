@@ -3,14 +3,28 @@ import styles from './Technology.module.scss';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import fetch from './../data.json';
 
-import launchLandscape from './../assets/technology/image-launch-vehicle-landscape.jpg';
-import launchPortrait from './../assets/technology/image-launch-vehicle-portrait.jpg';
+// import launchLandscape from './../assets/technology/image-launch-vehicle-landscape.jpg';
+// import launchPortrait from './../assets/technology/image-launch-vehicle-portrait.jpg';
+
+import mainImgsArr from '../Root';
 
 import spaceportLandscape from './../assets/technology/image-spaceport-landscape.jpg';
 import spaceportPortrait from './../assets/technology/image-spaceport-portrait.jpg';
 
 import spaceLandscape from './../assets/technology/image-space-capsule-landscape.jpg';
 import spacePortrait from './../assets/technology/image-space-capsule-portrait.jpg';
+
+const launchLandscape = mainImgsArr[4];
+const launchPortrait = mainImgsArr[5];
+
+const imgsArr = [
+    launchLandscape,
+    launchPortrait,
+    spaceLandscape,
+    spacePortrait,
+    spaceportLandscape,
+    spaceportPortrait,
+];
 
 // // // // // // // // // //
 
@@ -140,6 +154,13 @@ export const Space3 = function (props) {
 export const Technology = function () {
     const navigate = useNavigate();
     useEffect(() => navigate('/technology/launch'), []);
+
+    useEffect(() => {
+        imgsArr.forEach(picture => {
+            const img = new Image();
+            img.src = picture;
+        });
+    }, []);
 
     return (
         <main className={styles.main}>

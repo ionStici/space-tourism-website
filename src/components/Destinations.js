@@ -3,8 +3,10 @@ import info from './../data.json';
 import styles from './Destinations.module.scss';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 
-import moonPng from './../assets/destination/image-moon.png';
-import moonWebp from './../assets/destination/image-moon.webp';
+// import moonPng from './../assets/destination/image-moon.png';
+// import moonWebp from './../assets/destination/image-moon.webp';
+
+import mainImgsArr from '../Root';
 
 import marsPng from './../assets/destination/image-mars.png';
 import marsWebp from './../assets/destination/image-mars.webp';
@@ -14,6 +16,22 @@ import europaWebp from './../assets/destination/image-europa.webp';
 
 import titanPng from './../assets/destination/image-titan.png';
 import titanWebp from './../assets/destination/image-titan.webp';
+
+const moonPng = mainImgsArr[0];
+const moonWebp = mainImgsArr[1];
+
+const imgsArr = [
+    moonPng,
+    moonWebp,
+    marsPng,
+    marsWebp,
+    europaPng,
+    europaWebp,
+    titanPng,
+    titanWebp,
+];
+
+// // // // // // // // // //
 
 const Component = function (props) {
     const imgRef = useRef(null);
@@ -141,7 +159,16 @@ const Component = function (props) {
     );
 };
 
+// // // // // // // // // //
+
 export const Destinations = function (props) {
+    useEffect(() => {
+        imgsArr.forEach(picture => {
+            const img = new Image();
+            img.src = picture;
+        });
+    }, []);
+
     const navigate = useNavigate();
     const goDestinationPage = () => navigate('/destination');
 
